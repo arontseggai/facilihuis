@@ -1,6 +1,6 @@
-class CreateApartements < ActiveRecord::Migration
+class CreateApartments < ActiveRecord::Migration
   def change
-    create_table :apartements do |t|
+    create_table :apartments do |t|
       t.string :street
       t.string :area_code
       t.string :house_number

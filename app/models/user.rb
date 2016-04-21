@@ -6,5 +6,5 @@ class User < ActiveRecord::Base
 
   enumerize :role, in: [:owner, :cleaner, :manager, :admin], default: :owner
 
-  has_many :Apartements
+  has_many :Apartments
 end
