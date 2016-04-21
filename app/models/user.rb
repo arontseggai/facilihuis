@@ -5,4 +5,6 @@ class User < ActiveRecord::Base
   extend Enumerize
 
   enumerize :role, in: [:owner, :cleaner, :manager, :admin], default: :owner
+
+  has_many :Apartements
 end
