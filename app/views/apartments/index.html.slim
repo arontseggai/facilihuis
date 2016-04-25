@@ -1,3 +1,5 @@
 = @apartments.each do |apartment|
     h1 = apartment.id
     end
+
+= link_to "Add apartment", new_user_apartment_path(current_user), {class: "btn btn-primary"}

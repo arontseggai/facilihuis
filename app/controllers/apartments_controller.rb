@@ -3,14 +3,20 @@ class ApartmentsController < ApplicationController
 
   def index
     @apartments = @user.apartments
+
+
+
   end
 
+  def new
+    @apartment = Apartment.new
+  end
 
 
 
   private
 
   def set_user
-    @user= User.find(1)
+    @user = User.find(current_user)
   end
 end
