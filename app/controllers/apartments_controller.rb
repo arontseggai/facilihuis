@@ -3,8 +3,9 @@ class ApartmentsController < ApplicationController
 
   def index
     @apartments = @user.apartments
+  end
 
-
+  def show
 
   end
 
@@ -12,9 +13,23 @@ class ApartmentsController < ApplicationController
     @apartment = Apartment.new
   end
 
+  def create
+    @apartment = Apartment.new(apartment_params)
+
+    if @apartment.valid?
+      @apartment.save
+      redirect_to user_apartments_path(current_user)
+    else
+      render "new"
+    end
+  end
 
 
   private
+
+  def apartment_params
+    params.require(:apartment).permit(:street, :user_id)
+  end
 
   def set_user
     @user = User.find(current_user)
