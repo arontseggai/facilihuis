@@ -1,11 +1,14 @@
 .text-center
 .container
   .row
-    .col-sm-4
+    .col-sm-4.col-sm-offset-4
       = simple_form_for([@user, @apartment]) do |f|
         = f.error_notification
         = f.input :user_id, input_html: { value: current_user.id}, as: :hidden
         = f.input :street, :input_html => {:size => 40, :maxlength => 27}, placeholder: 'street', label: false
+        = f.input :house_number, :input_html => {:size => 40, :maxlength => 27}, placeholder: 'house number', label: false
+        = f.input :state, :input_html => {:size => 40, :maxlength => 27}, placeholder: 'state', label: false
+
 
 
         = f.button :submit, class: 'btn btn-primary', value: 'Add apartment'

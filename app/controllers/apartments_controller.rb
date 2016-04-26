@@ -1,4 +1,4 @@
-class ApartmentsController < ApplicationController
+  class ApartmentsController < ApplicationController
   before_action :set_user
 
   def index
@@ -25,10 +25,12 @@ class ApartmentsController < ApplicationController
   end
 
 
+
+
   private
 
   def apartment_params
-    params.require(:apartment).permit(:street, :user_id)
+    params.require(:apartment).permit(:street, :user_id, :house_number, :state)
   end
 
   def set_user
