@@ -1,0 +1,11 @@
+.text-center
+.container
+  .row
+    .col-sm-4
+      = simple_form_for([@user, @apartment]) do |f|
+        = f.error_notification
+        = f.input :user_id, input_html: { value: current_user.id}, as: :hidden
+        = f.input :street, :input_html => {:size => 40, :maxlength => 27}, placeholder: 'street', label: false
+
+
+        = f.button :submit, class: 'btn btn-primary', value: 'Add apartment'

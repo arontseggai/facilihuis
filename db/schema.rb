@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160421115248) do
+ActiveRecord::Schema.define(version: 20160425102430) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,36 @@ ActiveRecord::Schema.define(version: 20160421115248) do
   end
 
   add_index "apartments", ["user_id"], name: "index_apartments_on_user_id", using: :btree
+
+  create_table "cleaning_invoices", force: :cascade do |t|
+    t.time     "cleaning_time"
+    t.integer  "rate"
+    t.boolean  "paid"
+    t.integer  "amount"
+    t.integer  "tax"
+    t.integer  "total_amount"
+    t.integer  "invoice_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "cleaning_invoices", ["invoice_id"], name: "index_cleaning_invoices_on_invoice_id", using: :btree
+
+  create_table "invoices", force: :cascade do |t|
+    t.string   "month"
+    t.boolean  "paid"
+    t.integer  "amount"
+    t.integer  "fee"
+    t.integer  "extra_fee"
+    t.integer  "tax"
+    t.integer  "total_amount"
+    t.string   "notes"
+    t.integer  "apartment_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "invoices", ["apartment_id"], name: "index_invoices_on_apartment_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -55,4 +85,6 @@ ActiveRecord::Schema.define(version: 20160421115248) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "apartments", "users"
+  add_foreign_key "cleaning_invoices", "invoices"
+  add_foreign_key "invoices", "apartments"
 end

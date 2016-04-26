@@ -1,0 +1,8 @@
+div class="text-center"
+  - @apartments.each do |apartment|
+      h1 = apartment.id
+      h2 = apartment.street
+      h2 "--------------------------------------------------------"
+
+
+  = link_to "Add apartment", new_user_apartment_path(current_user), {class: "btn btn-primary"}
