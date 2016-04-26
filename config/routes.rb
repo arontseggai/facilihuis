@@ -4,6 +4,9 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :apartments
-    resources :invoices
+  end
+
+  resources :apartments do
+    resources :invoices, only: [:index, :show]
   end
 end

@@ -20,7 +20,7 @@ div class="text-center"
             td = apartment.street
             td = apartment.house_number
             td = apartment.state
-            td = link_to "invoices", user_apartment_invoices_path(@user, @apartment)
+            td = link_to "invoices", apartment_invoices_path(apartment.id)
 
   |
 
